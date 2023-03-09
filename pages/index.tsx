@@ -1,7 +1,10 @@
 import Head from "next/head";
-import {RandomCapy} from "../components/RandomCapy";
+import { RandomCapy } from "../components/RandomCapy";
 
 export default function Home() {
+  const max = 739;
+  const min = 1;
+  const random = () => Math.floor(Math.random() * (max - min) + min);
   return (
     <>
       <Head>
@@ -11,8 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-       
-      <RandomCapy/>
+        <RandomCapy image={`https://api.capy.lol/v1/capybara/${random()}`} />
       </main>
     </>
   );
