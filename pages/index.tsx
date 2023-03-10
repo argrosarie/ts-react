@@ -2,16 +2,20 @@ import { useState } from "react";
 import Head from "next/head";
 import { RandomCapy } from "../components/RandomCapy";
 
+
+const generateId = () => Math.random().toString(36).substring(2,9);
+type ImageItem = { id: string; url: string };
+
 export default function Home() {
   const max = 739;
   const min = 1;
   const random = () => Math.floor(Math.random() * (max - min) + min);
 
-  const [images, setImages] = useState<Array<string>>([
-    `https://api.capy.lol/v1/capybara/${random()}`,
-    `https://api.capy.lol/v1/capybara/${random()}`,
-    `https://api.capy.lol/v1/capybara/${random()}`,
-    `https://api.capy.lol/v1/capybara/${random()}`
+  const [images, setImages] = useState<Array<ImageItem>>([
+    {id: generateId(), url: `https://api.capy.lol/v1/capybara/${random()}`},
+    {id: generateId(), url: `https://api.capy.lol/v1/capybara/${random()}`},
+    {id: generateId(), url: `https://api.capy.lol/v1/capybara/${random()}`},
+    {id: generateId(), url: `https://api.capy.lol/v1/capybara/${random()}`},
   ]);
   return (
     <>
@@ -22,11 +26,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {images.map((image, index) => 
-        <div key={index} className="p-4"><RandomCapy image={image} /></div>
-         
-        )}
-       
+        {images.map(({id, url}) => (
+          <div key={id} className="p-4">
+            <RandomCapy image={url} />
+          </div>
+        ))}
       </main>
     </>
   );
