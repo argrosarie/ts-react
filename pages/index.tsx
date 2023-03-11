@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import Head from "next/head";
 import { RandomCapy } from "../components/RandomCapy";
 
@@ -12,7 +12,8 @@ export default function Home() {
 
   const [images, setImages] = useState<Array<ImageItem>>([]);
 
-  const addNewCapy = () => {
+  const addNewCapy: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
     const newImageItem: ImageItem = {
       id: generateId(),
       url: `https://api.capy.lol/v1/capybara/${random()}`,
