@@ -18,10 +18,7 @@ export default function Home() {
       id: generateId(),
       url: `https://api.capy.lol/v1/capybara/${random()}`,
     };
-    setImages([
-      ...images,
-      newImageItem
-    ]);
+    setImages([...images, newImageItem]);
   };
   return (
     <>
@@ -31,15 +28,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <button onClick={addNewCapy}>Add new Capy</button>
+      <main className="">
+        <button
+          className="p-3 mt-6 pointer text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
+          onClick={addNewCapy}
+        >
+          Add new Capy
+        </button>
         {images.map(({ id, url }) => (
           <div key={id} className="p-4">
             <LazyImage
-            width={320}
-            height="auto"
-            src={url}
-            className="rounded bg-gray-300" />
+              width={320}
+              height="auto"
+              src={url}
+              className="rounded bg-gray-300"
+            />
           </div>
         ))}
       </main>
