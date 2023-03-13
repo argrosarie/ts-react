@@ -1,6 +1,6 @@
 import { MouseEventHandler, useState } from "react";
 import Head from "next/head";
-import { RandomCapy } from "../components/RandomCapy";
+import { LazyImage } from "../components/RandomCapy";
 
 const generateId = () => Math.random().toString(36).substring(2, 9);
 type ImageItem = { id: string; url: string };
@@ -35,7 +35,11 @@ export default function Home() {
         <button onClick={addNewCapy}>Add new Capy</button>
         {images.map(({ id, url }) => (
           <div key={id} className="p-4">
-            <RandomCapy image={url} />
+            <LazyImage
+            width={320}
+            height="auto"
+            src={url}
+            className="rounded bg-gray-300" />
           </div>
         ))}
       </main>
