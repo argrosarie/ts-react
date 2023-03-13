@@ -28,13 +28,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="py-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center flex-col">
-      <h3
-          className="mt-2 text-3xl leading-8 font-extrabold tracking-wide uppercase text-purple-700 sm:leading-10"
-        >
+      <main className="py-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center flex-col relative">
+        {/* <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-wide uppercase text-purple-700 sm:leading-10">
           Capybara generator
         </h3>
-      <p className="py-6 text-left md:text-justify text-gray-500">
+        <p className="py-6 text-left md:text-justify text-gray-500">
           Do you love capybaras?
           <br />
           Then this app is for you! It's a fun capybara photo generator that
@@ -44,25 +42,29 @@ export default function Home() {
           that image loading happens in a deferred way, based on user needs and
           available bandwidth. This allows for a smoother and faster user
           experience without having to wait for all images to load at once.
-        </p>
-        <button
-          className="p-3 mt-6 pointer text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
-          onClick={addNewCapy}
-        >
-          Add new Capy
-        </button>
-        <div className="flex items-center justify-center flex-wrap">
-        {images.map(({ id, url }) => (
-          <div key={id} className="p-4">
-            <LazyImage
-              width={320}
-              height="auto"
-              src={url}
-              className="rounded bg-gray-300"
-            />
+        </p> */}
+        {/* sticky top-0 z-20 */}
+       <div className="fixed top-0 left-0 right-0 flex justify-center bg-black">
+          <button
+            className="p-3 mt-6 pointer text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
+            onClick={addNewCapy}
+          >
+            Add new Capy
+          </button>
+        
           </div>
-        ))}
-        </div>  
+        <div className="flex items-center justify-center flex-wrap">
+          {images.map(({ id, url }) => (
+            <div key={id} className="p-4">
+              <LazyImage
+                width={320}
+                height="auto"
+                src={url}
+                className="rounded bg-gray-300"
+              />
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
